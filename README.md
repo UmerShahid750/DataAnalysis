@@ -4,8 +4,13 @@
  #  Required Python Libraries
   - pandas
   - xarray
+  - rasterio
+  - fiona
+  - shapely
   - rioxarray
   - cdsapi
   - numpy
   - cfgrib
   - matplotlib
+  - gcsfs
+  - geopandas
