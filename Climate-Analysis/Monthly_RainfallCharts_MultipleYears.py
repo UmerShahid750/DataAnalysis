@@ -9,17 +9,17 @@ import datetime as dt
 import geopandas as gpd
 import rioxarray as rxr
 
-onedrive_path = 'C:/Users/LENOVO/OneDrive/Work/Python/DataAnalysis/DataAnalysis/Data/spatial-data/'
-local_path = 'D:/ERA5_Data/Pakistan/'
+Shape_file_path = 'C:/Users/LENOVO/OneDrive/Work/Python/DataAnalysis/DataAnalysis/Data/spatial-data/'
+ERA5_files_path = 'D:/ERA5_Data/Pakistan/'
 
 #Reading the shape file
-gdf = gpd.read_file(onedrive_path+'/Shapefiles/Pakistan.shp')
+gdf = gpd.read_file(Shape_file_path+'/Shapefiles/Pakistan.shp')
 
 startyear = 2001
 endyear = 2013
 
 #Reading the nc file
-nc_file  = xr.open_dataset(local_path+'/ppt3.nc') #ppt1(1979-1990), ppt2(1991-2000), ppt3(2001-2012) ppt4(2013-2023)
+nc_file  = xr.open_dataset(ERA5_files_path+'/ppt3.nc') #ppt1(1979-1990), ppt2(1991-2000), ppt3(2001-2012) ppt4(2013-2023)
 # nc_file = nc_file.drop_vars('expver')
 # tp_removed_dim = nc_file['tp'].isel(expver=0)
 # nc_file['tp'] = tp_removed_dim
@@ -78,5 +78,5 @@ for year in range(startyear,endyear):
     cb.set_label(label='Precipitation (mm)', color = 'k', size=14)
     # Add a label at the bottom
     fig.text(0.9, 0.03, f'Year ={year} ', fontsize=14, ha='center')
-    plt.savefig(local_path+f'year_{year}_plot.png')
+    plt.savefig(ERA5_files_path+f'year_{year}_plot.png')
 
